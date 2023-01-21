@@ -2,7 +2,7 @@
 const itemsContainer = document.querySelector(".items");
 
 // on aappelle la fonction fetch() pour recuperer les donner de l'API
-fetch("http://localhost:3000/api/products")
+fetch("http://localhost:3000/api/products/")
 // on transforme les donnees de l'api au format JSON 
 
 .then(data => data.json())
@@ -10,7 +10,7 @@ fetch("http://localhost:3000/api/products")
 // pour chaque donnees de l'api , on met cette donner dans la balise html que lon créé
 .then(jsonListProduct => {
     for(let jsonProduct of jsonListProduct){
-        const a = document.createElement("a")
+        const a = document.createElement("a");
         a.href = `./product.html?id=${jsonProduct._id}`;
 
 
@@ -33,6 +33,7 @@ fetch("http://localhost:3000/api/products")
 
         const p = document.createElement("p");
         p.className = "produtDescription";
+        p.textContent = jsonProduct.description;
         article.appendChild(p);
 
         itemsContainer.appendChild(a);
